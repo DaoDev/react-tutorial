@@ -4,13 +4,14 @@ import InputField from '../../../../components/form-controls/InputField';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Avatar, Button, Typography } from '@material-ui/core';
+import { Avatar, Button, LinearProgress, Typography } from '@material-ui/core';
 import { LockOutlined } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import PasswordFiled from '../../../../components/form-controls/PasswordFiled';
 
 const useStyle = makeStyles((theme) => ({
   root: {
+    position: 'relative',
     paddingTop: 20,
   },
   avatar: {
@@ -23,6 +24,13 @@ const useStyle = makeStyles((theme) => ({
   },
   submit: {
     margin: '30px 0 20px 0',
+  },
+
+  progress: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
   },
 }));
 
@@ -37,10 +45,8 @@ function RegisterForm(props) {
       .string()
       .required('Please enter your full name')
       .test('should has at least two words', 'Please enter at least two words', (value) => {
-        console.log('value', value);
         return value.split(' ').length >= 2;
       }),
-
     email: yup
       .string()
       .required('Please enter your email')
@@ -67,16 +73,20 @@ function RegisterForm(props) {
     resolver: yupResolver(schema),
   });
 
-  const handleSubmit = (values) => {
-    console.log(form);
+  const handleSubmit = async (values) => {
     const { onSubmit } = props;
     if (onSubmit) {
-      onSubmit(values);
+      await onSubmit(values);
     }
     form.reset();
   };
+
+  const { isSubmitting } = form.formState;
+
   return (
     <div className={classes.root}>
+      {isSubmitting && <LinearProgress className={classes.progress} />}
+
       <Avatar className={classes.avatar}>
         <LockOutlined></LockOutlined>
       </Avatar>
@@ -97,6 +107,7 @@ function RegisterForm(props) {
           variant="contained"
           color="primary"
           fullWidth
+          disabled={isSubmitting}
         >
           Create an account
         </Button>

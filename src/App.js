@@ -9,8 +9,12 @@ import { useEffect } from 'react';
 import productApi from './api/productApi';
 import Header from './components/Header';
 import CounterFeature from './features/Counter';
+import { Button } from '@material-ui/core';
+import { useSnackbar } from 'notistack';
 
 function App() {
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
   useEffect(() => {
     const fetchProducts = async () => {
       const productList = await productApi.getAll();
@@ -18,9 +22,14 @@ function App() {
     fetchProducts();
   }, []);
 
+  const showNoti = () => {
+    enqueueSnackbar('Register successfully', { variant: 'success' });
+  };
+
   return (
     <div className="App">
       <Header />
+      <Button onClick={showNoti}>Show noti</Button>
       <Switch>
         <Redirect from="/home" to="/" exact />
         <Redirect from="/home/:homeId" to="/homes/:homeId" exact />

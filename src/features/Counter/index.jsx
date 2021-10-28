@@ -8,7 +8,6 @@ CounterFeature.propTypes = {};
 function CounterFeature(props) {
   const dispatch = useDispatch();
   const counter = useSelector((state) => state.counter);
-  console.log('counter', counter);
 
   const handleIncreaseClick = () => {
     const action = increase();
