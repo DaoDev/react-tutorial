@@ -20,7 +20,7 @@ PasswordFiled.propTypes = {
 };
 
 function PasswordFiled(props) {
-  const { form, name, label, disable } = props;
+  const { form, name, label } = props;
   const { control } = form;
   const [showPassword, setShowPassword] = useState(false);
 

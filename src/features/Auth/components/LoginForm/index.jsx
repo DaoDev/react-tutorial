@@ -34,41 +34,21 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-RegisterForm.propTypes = {
+LoginForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-function RegisterForm(props) {
+function LoginForm(props) {
   const classes = useStyle();
   const schema = yup.object().shape({
-    fullname: yup
-      .string()
-      .required('Please enter your full name')
-      .test('should has at least two words', 'Please enter at least two words', (value) => {
-        return value.split(' ').length >= 2;
-      }),
-    email: yup
-      .string()
-      .required('Please enter your email')
-      .email('Please enter a valid email address'),
-
-    password: yup
-      .string()
-      .required('Please enter your password')
-      .min(6, 'Please enter at least 6 characters.'),
-
-    retypePassword: yup
-      .string()
-      .required('Please retype your password.')
-      .oneOf([yup.ref('password')], 'Password dose not match'),
+    identifier: yup.string().required('Please enter your email'),
+    password: yup.string().required('Please enter your password'),
   });
 
   const form = useForm({
     defaultValues: {
-      fullname: '',
-      email: '',
+      identifier: '',
       password: '',
-      retypePassword: '',
     },
     resolver: yupResolver(schema),
   });
@@ -91,14 +71,12 @@ function RegisterForm(props) {
       </Avatar>
 
       <Typography className={classes.title} component="h3" variant="h5">
-        Create An Account
+        Sign in
       </Typography>
 
       <form onSubmit={form.handleSubmit(handleSubmit)}>
-        <InputField form={form} name="fullname" label="Full Name" form={form} />
-        <InputField form={form} name="email" label="Email" form={form} />
+        <InputField form={form} name="identifier" label="Email" form={form} />
         <PasswordFiled form={form} name="password" label="Password" form={form} />
-        <PasswordFiled form={form} name="retypePassword" label="Reset Password" form={form} />
 
         <Button
           type="submit"
@@ -109,11 +87,11 @@ function RegisterForm(props) {
           disabled={isSubmitting}
           size="large"
         >
-          Create an account
+          Sign in
         </Button>
       </form>
     </div>
   );
 }
 
-export default RegisterForm;
+export default LoginForm;

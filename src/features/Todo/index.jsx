@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import TodoList from './components/TodoList';
+import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import ListPage from './page/ListPage';
 import DetaiPage from './page/DetailPage';

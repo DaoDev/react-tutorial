@@ -1,9 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrease, increase } from './counterSlice';
-
-CounterFeature.propTypes = {};
 
 function CounterFeature(props) {
   const dispatch = useDispatch();

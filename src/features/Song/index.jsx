@@ -1,25 +1,22 @@
-import React from "react";
-import PropTypes from "prop-types";
-import AlbumList from "./components/AlbumList";
-
-AlbumFeature.propTypes = {};
+import React from 'react';
+import AlbumList from './components/AlbumList';
 
 function AlbumFeature(props) {
   const albumList = [
     {
       id: 1,
-      name: "Bai Hat 1",
-      thumnailUrl: "",
+      name: 'Bai Hat 1',
+      thumbnailUrl: '',
     },
     {
       id: 2,
-      name: "Bai Hat 2",
-      thumnailUrl: "",
+      name: 'Bai Hat 2',
+      thumbnailUrl: '',
     },
     {
       id: 3,
-      name: "Bai Hat 3",
-      thumnailUrl: "",
+      name: 'Bai Hat 3',
+      thumbnailUrl: '',
     },
   ];
   return (

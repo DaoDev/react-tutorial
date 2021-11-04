@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import PropTypes from 'prop-types';
 import TodoList from '../../components/TodoList';
 import { useHistory, useLocation, useRouteMatch } from 'react-router';
 import queryString from 'query-string';
