@@ -11,14 +11,6 @@ import ProductFeature from './features/Product';
 import './index.css';
 
 function App() {
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const productList = await productApi.getAll();
-      console.log(productList);
-    };
-    fetchProducts();
-  }, []);
-
   return (
     <div className="App">
       <Header />
