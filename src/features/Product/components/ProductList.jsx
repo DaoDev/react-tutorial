@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Box } from '@material-ui/core';
-import { Skeleton } from '@material-ui/lab';
 import Product from './Product';
 
 ProductList.propTypes = {

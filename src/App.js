@@ -3,8 +3,6 @@ import TodoFeature from './features/Todo';
 import AlbumFeature from './features/Song';
 import { Redirect, Route, Switch } from 'react-router';
 import NotFound from './features/NotFound';
-import { useEffect } from 'react';
-import productApi from './api/productApi';
 import Header from './components/Header';
 import CounterFeature from './features/Counter';
 import ProductFeature from './features/Product';
