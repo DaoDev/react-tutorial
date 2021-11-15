@@ -75,10 +75,11 @@ function ListPage(props) {
   };
 
   const handleFiltersChange = (newFilters) => {
+    console.log('newFilters', newFilters);
     setFilters((prevFilters) => ({
       ...prevFilters,
       ...newFilters,
-    }))
+    }));
   };
 
   return (
@@ -87,7 +88,7 @@ function ListPage(props) {
         <Grid container spacing={1}>
           <Grid item className={classes.left}>
             <Paper elevation={0}>
-              <ProductFilters filters={filters} onchange={handleFiltersChange} />
+              <ProductFilters filters={filters} onChange={handleFiltersChange} />
             </Paper>
           </Grid>
 

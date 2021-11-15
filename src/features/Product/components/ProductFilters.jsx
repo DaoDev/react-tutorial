@@ -5,28 +5,35 @@ import FilterByCategory from './Filters/FilterByCategory';
 import FilterByPrice from './Filters/FilterByPrice';
 
 ProductFilters.propTypes = {
-    filters: PropTypes.object.isRequired,
-    onChange:PropTypes.func,
+  filters: PropTypes.object.isRequired,
+  onChange: PropTypes.func,
 };
 
-function ProductFilters({filters, onChange}) {
+function ProductFilters({ filters, onChange }) {
+  const handleCategoryChange = (newCategoryId) => {
+    console.log('newCategoryId', newCategoryId);
 
-    const handleCategoryChange = (newCategoryId) => {
-        if(!onChange) return
-        
-        const newFilters = {
-            ...filters,
-            categoryId: newCategoryId
-        }
-        onChange(newFilters)
+    // if (!onChange) return;
+
+    const newFilters = {
+      ...filters,
+      'category.id': newCategoryId,
+    };
+    onChange(newFilters);
+  };
+
+  const handlePriceChange = (values) => {
+    if (onChange) {
+      onChange(values);
     }
+  };
 
-    return (
-        <Box>
-            <FilterByCategory onchange={handleCategoryChange}/>
-            <FilterByPrice />
-        </Box>
-    );
+  return (
+    <Box>
+      <FilterByCategory onChange={handleCategoryChange} />
+      <FilterByPrice onChange={handlePriceChange} />
+    </Box>
+  );
 }
 
 export default ProductFilters;
